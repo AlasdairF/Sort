@@ -7,14 +7,10 @@ type KeyVal struct {
 	V uint32
 }
 
-func Make(l int) []KeyVal {
-	return make([]KeyVal, l)
-}
-
 func New(ar []uint32) []KeyVal {
 	newar := make([]KeyVal, len(ar))
 	for i, v := range ar {
-		newar[i] = KeyVal{i, v}
+		newar[i] = KeyVal{float64(i), v}
 	}
 	return newar
 }
@@ -26,7 +22,7 @@ func Fill(ar []uint32, newar []KeyVal) []KeyVal {
 		newar = newar[0:len(ar)]
 	}
 	for i, v := range ar {
-		newar[i] = KeyVal{i, v}
+		newar[i] = KeyVal{float64(i), v}
 	}
 	return newar
 }
