@@ -3,8 +3,8 @@ package sortInt32Uint16
 // ================= COMMON =================
 
 type KeyVal struct {
-	k int32
-	v uint16
+	K int32
+	V uint16
 }
 
 func Make(l int) []KeyVal {
