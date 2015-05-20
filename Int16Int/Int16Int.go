@@ -31,10 +31,10 @@ func Fill(ar []int, newar []KeyVal) []KeyVal {
 	return newar
 }
 
-func Keys(ar []int, newar []KeyVal) []int {
+func Keys(ar []int16, newar []KeyVal) []int16 {
 	l := len(newar)
 	if len(ar) < l {
-		ar = make([]int, l)
+		ar = make([]int16, l)
 	}
 	for i, v := range newar {
 		ar[i] = v.K
