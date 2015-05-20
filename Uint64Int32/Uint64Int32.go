@@ -37,7 +37,7 @@ func Keys(ar []int32, newar []KeyVal) []int32 {
 		ar = make([]int32, l)
 	}
 	for i, v := range newar {
-		ar[i] = v.k
+		ar[i] = v.K
 	}
 	return ar[0:l]
 }
@@ -67,7 +67,7 @@ func heapSortAsc(data []KeyVal, a, b int) {
 func insertionSortAsc(data []KeyVal, a, b int) {
 	var j int
 	for i := a + 1; i < b; i++ {
-		for j = i; j > a && data[j].v < data[j-1].v; j-- {
+		for j = i; j > a && data[j].V < data[j-1].V; j-- {
 			data[j], data[j-1] = data[j-1], data[j]
 		}
 	}
@@ -80,10 +80,10 @@ func siftDownAsc(data []KeyVal, lo, hi, first int) {
 		if child >= hi {
 			break
 		}
-		if child+1 < hi && data[first+child].v < data[first+child+1].v {
+		if child+1 < hi && data[first+child].V < data[first+child+1].V {
 			child++
 		}
-		if data[first+root].v >= data[first+child].v {
+		if data[first+root].V >= data[first+child].V {
 			return
 		}
 		data[first+root], data[first+child] = data[first+child], data[first+root]
@@ -96,13 +96,13 @@ func medianOfThreeAsc(data []KeyVal, a, b, c int) {
 	m1 := a
 	m2 := c
 	// bubble sort on 3 elements
-	if data[m1].v < data[m0].v {
+	if data[m1].V < data[m0].V {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
-	if data[m2].v < data[m1].v {
+	if data[m2].V < data[m1].V {
 		data[m2], data[m1] = data[m1], data[m2]
 	}
-	if data[m1].v < data[m0].v {
+	if data[m1].V < data[m0].V {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
 }
@@ -129,9 +129,9 @@ func doPivotAsc(data []KeyVal, lo, hi int) (midlo, midhi int) {
 	a, b, c, d := lo+1, lo+1, hi, hi
 	for {
 		for b < c {
-			if data[b].v < data[pivot].v {
+			if data[b].V < data[pivot].V {
 				b++
-			} else if data[pivot].v >= data[b].v {
+			} else if data[pivot].V >= data[b].V {
 				data[a], data[b] = data[b], data[a]
 				a++
 				b++
@@ -140,9 +140,9 @@ func doPivotAsc(data []KeyVal, lo, hi int) (midlo, midhi int) {
 			}
 		}
 		for b < c {
-			if data[pivot].v < data[c-1].v {
+			if data[pivot].V < data[c-1].V {
 				c--
-			} else if data[c-1].v >= data[pivot].v {
+			} else if data[c-1].V >= data[pivot].V {
 				data[c-1], data[d-1] = data[d-1], data[c-1]
 				c--
 				d--
@@ -199,7 +199,7 @@ func Asc(data []KeyVal) {
 
 func IsSortedAsc(data []KeyVal) bool {
 	for i := len(data) - 1; i > 0; i-- {
-		if data[i].v < data[i-1].v {
+		if data[i].V < data[i-1].V {
 			return false
 		}
 	}
@@ -241,7 +241,7 @@ func symMergeAsc(data []KeyVal, a, m, b int) {
 		r, p = mid, n-1
 		for start < r {
 			c = start + (r-start)/2
-			if data[p-c].v >= data[c].v {
+			if data[p-c].V >= data[c].V {
 				start = c + 1
 			} else {
 				r = c
@@ -252,7 +252,7 @@ func symMergeAsc(data []KeyVal, a, m, b int) {
 		r, p = m, n-1
 		for start < r {
 			c = start + (r-start)/2
-			if data[p-c].v >= data[c].v {
+			if data[p-c].V >= data[c].V {
 				start = c + 1
 			} else {
 				r = c
@@ -309,7 +309,7 @@ func heapSortDesc(data []KeyVal, a, b int) {
 func insertionSortDesc(data []KeyVal, a, b int) {
 	var j int
 	for i := a + 1; i < b; i++ {
-		for j = i; j > a && data[j].v >= data[j-1].v; j-- {
+		for j = i; j > a && data[j].V >= data[j-1].V; j-- {
 			data[j], data[j-1] = data[j-1], data[j]
 		}
 	}
@@ -322,10 +322,10 @@ func siftDownDesc(data []KeyVal, lo, hi, first int) {
 		if child >= hi {
 			break
 		}
-		if child+1 < hi && data[first+child].v >= data[first+child+1].v {
+		if child+1 < hi && data[first+child].V >= data[first+child+1].V {
 			child++
 		}
-		if data[first+root].v < data[first+child].v {
+		if data[first+root].V < data[first+child].V {
 			return
 		}
 		data[first+root], data[first+child] = data[first+child], data[first+root]
@@ -338,13 +338,13 @@ func medianOfThreeDesc(data []KeyVal, a, b, c int) {
 	m1 := a
 	m2 := c
 	// bubble sort on 3 elements
-	if data[m1].v >= data[m0].v {
+	if data[m1].V >= data[m0].V {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
-	if data[m2].v >= data[m1].v {
+	if data[m2].V >= data[m1].V {
 		data[m2], data[m1] = data[m1], data[m2]
 	}
-	if data[m1].v >= data[m0].v {
+	if data[m1].V >= data[m0].V {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
 }
@@ -371,9 +371,9 @@ func doPivotDesc(data []KeyVal, lo, hi int) (midlo, midhi int) {
 	a, b, c, d := lo+1, lo+1, hi, hi
 	for {
 		for b < c {
-			if data[b].v >= data[pivot].v {
+			if data[b].V >= data[pivot].V {
 				b++
-			} else if data[pivot].v < data[b].v {
+			} else if data[pivot].V < data[b].V {
 				data[a], data[b] = data[b], data[a]
 				a++
 				b++
@@ -382,9 +382,9 @@ func doPivotDesc(data []KeyVal, lo, hi int) (midlo, midhi int) {
 			}
 		}
 		for b < c {
-			if data[pivot].v >= data[c-1].v {
+			if data[pivot].V >= data[c-1].V {
 				c--
-			} else if data[c-1].v < data[pivot].v {
+			} else if data[c-1].V < data[pivot].V {
 				data[c-1], data[d-1] = data[d-1], data[c-1]
 				c--
 				d--
@@ -441,7 +441,7 @@ func Desc(data []KeyVal) {
 
 func IsSortedDesc(data []KeyVal) bool {
 	for i := len(data) - 1; i > 0; i-- {
-		if data[i].v >= data[i-1].v {
+		if data[i].V >= data[i-1].V {
 			return false
 		}
 	}
@@ -483,7 +483,7 @@ func symMergeDesc(data []KeyVal, a, m, b int) {
 		r, p = mid, n-1
 		for start < r {
 			c = start + (r-start)/2
-			if data[p-c].v < data[c].v {
+			if data[p-c].V < data[c].V {
 				start = c + 1
 			} else {
 				r = c
@@ -494,7 +494,7 @@ func symMergeDesc(data []KeyVal, a, m, b int) {
 		r, p = m, n-1
 		for start < r {
 			c = start + (r-start)/2
-			if data[p-c].v < data[c].v {
+			if data[p-c].V < data[c].V {
 				start = c + 1
 			} else {
 				r = c
