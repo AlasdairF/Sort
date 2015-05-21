@@ -270,7 +270,7 @@ func heapSortDesc(data []float64, a, b int) {
 func insertionSortDesc(data []float64, a, b int) {
 	var j int
 	for i := a + 1; i < b; i++ {
-		for j = i; j > a && data[j] >= data[j-1]; j-- {
+		for j = i; j > a && data[j] > data[j-1]; j-- {
 			data[j], data[j-1] = data[j-1], data[j]
 		}
 	}
@@ -283,10 +283,10 @@ func siftDownDesc(data []float64, lo, hi, first int) {
 		if child >= hi {
 			break
 		}
-		if child+1 < hi && data[first+child] >= data[first+child+1] {
+		if child+1 < hi && data[first+child] > data[first+child+1] {
 			child++
 		}
-		if data[first+root] < data[first+child] {
+		if data[first+root] <= data[first+child] {
 			return
 		}
 		data[first+root], data[first+child] = data[first+child], data[first+root]
@@ -299,13 +299,13 @@ func medianOfThreeDesc(data []float64, a, b, c int) {
 	m1 := a
 	m2 := c
 	// bubble sort on 3 elements
-	if data[m1] >= data[m0] {
+	if data[m1] > data[m0] {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
-	if data[m2] >= data[m1] {
+	if data[m2] > data[m1] {
 		data[m2], data[m1] = data[m1], data[m2]
 	}
-	if data[m1] >= data[m0] {
+	if data[m1] > data[m0] {
 		data[m1], data[m0] = data[m0], data[m1]
 	}
 }
@@ -332,9 +332,9 @@ func doPivotDesc(data []float64, lo, hi int) (midlo, midhi int) {
 	a, b, c, d := lo+1, lo+1, hi, hi
 	for {
 		for b < c {
-			if data[b] >= data[pivot] {
+			if data[b] > data[pivot] {
 				b++
-			} else if data[pivot] < data[b] {
+			} else if data[pivot] <= data[b] {
 				data[a], data[b] = data[b], data[a]
 				a++
 				b++
@@ -343,9 +343,9 @@ func doPivotDesc(data []float64, lo, hi int) (midlo, midhi int) {
 			}
 		}
 		for b < c {
-			if data[pivot] >= data[c-1] {
+			if data[pivot] > data[c-1] {
 				c--
-			} else if data[c-1] < data[pivot] {
+			} else if data[c-1] <= data[pivot] {
 				data[c-1], data[d-1] = data[d-1], data[c-1]
 				c--
 				d--
@@ -403,7 +403,7 @@ func Desc(data []float64) {
 
 func IsSortedDesc(data []float64) bool {
 	for i := len(data) - 1; i > 0; i-- {
-		if data[i] >= data[i-1] {
+		if data[i] > data[i-1] {
 			return false
 		}
 	}
