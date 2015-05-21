@@ -51,10 +51,7 @@ func siftDownAsc(data []uint8, lo, hi, first int) {
 	}
 }
 
-func medianOfThreeAsc(data []uint8, a, b, c int) {
-	m0 := b
-	m1 := a
-	m2 := c
+func medianOfThreeAsc(data []uint8, m1, m0, m2 int) {
 	// bubble sort on 3 elements
 	if data[m1] < data[m0] {
 		data[m1], data[m0] = data[m0], data[m1]
@@ -294,10 +291,7 @@ func siftDownDesc(data []uint8, lo, hi, first int) {
 	}
 }
 
-func medianOfThreeDesc(data []uint8, a, b, c int) {
-	m0 := b
-	m1 := a
-	m2 := c
+func medianOfThreeDesc(data []uint8, m1, m0, m2 int) {
 	// bubble sort on 3 elements
 	if data[m1] > data[m0] {
 		data[m1], data[m0] = data[m0], data[m1]
