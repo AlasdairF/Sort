@@ -31,7 +31,7 @@ Included are also key/value sorting algorithms and stable sorting.
 
 ### Example identical to above using the `New()` helper function
 
-    import "github.com/AlasdairF/Sort/Uint32Float64"
+     import "github.com/AlasdairF/Sort/Uint32Float64"
      scores := []float64{10.5, 44.1, 1.9, 8.5}
      keyval := sortUint32Float64.New(scores) // keys are filled in automatically starting from 0
      sortUint32Float64.Desc(keyval)
