@@ -15,7 +15,7 @@ Included are also key/value sorting algorithms and stable sorting.
 ### Example a descending stable sort on slice of Uint32s
 
      import "github.com/AlasdairF/Sort/Uint32"
-     list := []int{10, 44, 1, 7, 4, 0, 9, 0, 3, 65, 38}
+     list := []uint32{10, 44, 1, 7, 4, 0, 9, 0, 3, 65, 38}
      sortInt.StableDesc(list)
 
 ### Example sort on key/value pair Uint32/Float64
@@ -35,7 +35,11 @@ Included are also key/value sorting algorithms and stable sorting.
      scores := []float64{10.5, 44.1, 1.9, 8.5}
      keyval := sortUint32Float64.New(scores) // keys are filled in automatically starting from 0
      sortUint32Float64.Desc(keyval)
-     // then the keyval underlying array can be reused as follows
+     
+     // Then the keyval underlying array can be reused as follows
      scores2 := []float64{5.4, 30.4, 100.5}
      keyval = sortUint32Float64.Fill(scores2, keyval)
      sortUint32Float64.Asc(keyval)
+     
+     // Maybe after the sorting you only want the indexes?
+     keys := sortUint32Float64.Keys([]uint32{}, keyval)
