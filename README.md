@@ -16,7 +16,7 @@ Included are also key/value sorting algorithms and stable sorting.
 
      import "github.com/AlasdairF/Sort/Uint32"
      list := []uint32{10, 44, 1, 7, 4, 0, 9, 0, 3, 65, 38}
-     sortInt.StableDesc(list)
+     sortUint32.StableDesc(list)
 
 ### Example sort on key/value pair Uint32/Float64
 
