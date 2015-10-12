@@ -43,3 +43,74 @@ Included are also key/value sorting algorithms and stable sorting.
      
      // Maybe after the sorting you only want the indexes?
      keys := sortUint32Float64.Keys([]uint32{}, keyval)
+
+## Proof
+
+     package main
+     
+     import (
+      "time"
+      "fmt"
+      "sort"
+      "github.com/AlasdairF/Sort/Int"
+      "math/rand"
+     )
+     
+     func newCopy(ints []int) []int {
+     	s := make([]int, len(ints))
+     	copy(s, ints)
+     	return s
+     }
+     
+     func main() {
+     
+     // 2x 100 random slices of ints (all the same)
+     ints := make([]int, 100000)
+     for i:=0; i<100000; i++ {
+     	ints[i] = rand.Int()
+     }
+     copies1 := make([][]int, 100)
+     copies2 := make([][]int, 100)
+     for i:=0; i<100; i++ {
+     	copies1[i] = newCopy(ints)
+     	copies2[i] = newCopy(ints)
+     }
+     
+     t1:= time.Now().UnixNano()
+     for i:=0; i<100; i++ {
+     	sort.Ints(copies1[i])
+     }
+     t2 := time.Now().UnixNano()
+     for i:=0; i<100; i++ {
+     	sortInt.Asc(copies2[i])
+     }
+     t3 := time.Now().UnixNano()
+     
+     fmt.Println(`native sort took`, t2-t1, `nanoseconds`)
+     fmt.Println(`sortInt took`, t3-t2, `nanoseconds`)
+     }
+
+The results:     
+     
+     root /home/root # ./test
+     native sort took 4170648735 nanoseconds
+     sortInt took     1464291506 nanoseconds
+     root /home/root # ./test
+     native sort took 3938108749 nanoseconds
+     sortInt took     1286878885 nanoseconds
+     root /home/root # ./test
+     native sort took 4251135285 nanoseconds
+     sortInt took     1610303693 nanoseconds
+     root /home/root # ./test
+     native sort took 4721015337 nanoseconds
+     sortInt took     1380711512 nanoseconds
+     root /home/root # ./test
+     native sort took 4785185202 nanoseconds
+     sortInt took     1572508937 nanoseconds
+     root /home/root # ./test
+     native sort took 3235662481 nanoseconds
+     sortInt took     1329911802 nanoseconds
+     root /home/root # ./test
+     native sort took 3523107884 nanoseconds
+     sortInt took     1246381327 nanoseconds
+     
